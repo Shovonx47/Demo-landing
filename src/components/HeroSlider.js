@@ -7,28 +7,28 @@ export default function HeroSlider() {
     {
       id: 1,
       title: "NDC Students",
-      image: "/assets/images/ndc-students.jpg"
+      image: "/assets/images/slider/aus macquarie.jpeg"
     },
     {
       id: 2,
       title: "WELCOME TO NOTRE DAME COLLEGE, DHAKA",
-      image: "/assets/images/ndc-welcome.jpg"
+      image: "/assets/images/slider/aus melbrone.jpg"
     },
     {
       id: 3,
       title: "TEACHERS OF NDC",
-      image: "/assets/images/ndc-teachers.jpg"
+      image: "/assets/images/slider/aus national.jpg"
     },
     // Add more building images as per NDC website
     {
       id: 4,
       title: "Father Herington Bhaban",
-      image: "/assets/images/herington-bhaban.jpg"
+      image: "/assets/images/slider/aus melbrone.jpg"
     },
     {
       id: 5,
       title: "Father Martin Bhaban",
-      image: "/assets/images/martin-bhaban.jpg"
+      image: "/assets/images/slider/aus sydney.jpg"
     }
   ];
 
