@@ -14,35 +14,45 @@ import WelcomeSection from '@/components/sections/WelcomeSection';
 import KeyFeaturesSection from '@/components/sections/KeyFeaturesSection';
 import NewsEventsSection from '@/components/sections/NewsEventsSection';
 
+// Metadata for the page
+export const metadata = {
+  title: 'Home', // Will render as "Home | Notre Dame College Dhaka"
+  description: 'Welcome to Notre Dame College Dhaka - Discover academic excellence, vibrant campus life, and our rich educational heritage.',
+  openGraph: {
+    title: 'Home | Notre Dame College Dhaka',
+    description: 'Welcome to Notre Dame College Dhaka - Discover academic excellence, vibrant campus life, and our rich educational heritage.',
+  },
+};
+
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      
-      {/* Add NoticeTicker here */}
-      <NoticeTicker />
-      
-      <HeroSlider />
-      
-      {/* Add WelcomeSection, KeyFeaturesSection, and NewsEventsSection */}
-      <WelcomeSection />
-      <KeyFeaturesSection />
-      <NewsEventsSection />
-      
-      {/* Original content layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 py-12">
-        <div className="lg:col-span-2">
-          <PrincipalMessage />
-          <CollegeStats />
-          <RecentEvents />
+    <>
+
+      <main>
+        {/* Hero slider */}
+        <HeroSlider />
+
+        {/* Newly added sections */}
+        <WelcomeSection />
+        <KeyFeaturesSection />
+        <NewsEventsSection />
+
+        {/* Original layout with grid structure */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 py-12">
+          {/* Left content: Principal message, college stats, and recent events */}
+          <div className="lg:col-span-2">
+            <PrincipalMessage />
+            <CollegeStats />
+            <RecentEvents />
+          </div>
+
+          {/* Right content: Quick links and notice board */}
+          <div className="lg:col-span-1">
+            <QuickLinks />
+            <NoticeBoard />
+          </div>
         </div>
-        <div className="lg:col-span-1">
-          <QuickLinks />
-          <NoticeBoard />
-        </div>
-      </div>
-      
-      <Footer />
-    </main>
+      </main>
+    </>
   );
 }
