@@ -1,35 +1,35 @@
 "use client";
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     {
-      title: 'About Us',
-      submenu: ['Mission & Vision', 'History', 'Administration', 'Faculty & Staff', 'Governing Body']
+      title: "About Us",
+      submenu: ["Mission & Vision", "History", "Administration", "Faculty & Staff", "Governing Body"],
     },
     {
-      title: 'Academics',
-      submenu: ['Programs Offered', 'Curriculum', 'Academic Calendar', 'Departments', 'Syllabus']
+      title: "Academics",
+      submenu: ["Programs Offered", "Curriculum", "Academic Calendar", "Departments", "Syllabus"],
     },
     {
-      title: 'Admissions',
-      submenu: ['Admission Process', 'Eligibility Criteria', 'Application Forms', 'Tuition & Fees', 'Scholarships']
+      title: "Admissions",
+      submenu: ["Admission Process", "Eligibility Criteria", "Application Forms", "Tuition & Fees", "Scholarships"],
     },
     {
-      title: 'Student Life',
-      submenu: ['Extracurricular Activities', 'Student Services', 'Campus Facilities', 'Events & Calendars']
+      title: "Student Life",
+      submenu: ["Extracurricular Activities", "Student Services", "Campus Facilities", "Events & Calendars"],
     },
     {
-      title: 'News & Events',
-      submenu: ['Latest News', 'Upcoming Events', 'Notices']
+      title: "News & Events",
+      submenu: ["Latest News", "Upcoming Events", "Notices"],
     },
     {
-      title: 'Contact Us',
-      submenu: ['Contact Information', 'Location Map', 'Inquiry Form']
-    }
+      title: "Contact Us",
+      submenu: ["Contact Information", "Location Map", "Inquiry Form"],
+    },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function Navbar() {
               School Logo
             </Link>
           </div>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {menuItems.map((item) => (
@@ -53,7 +53,7 @@ export default function Navbar() {
                   {item.submenu.map((subItem) => (
                     <Link
                       key={subItem}
-                      href={`/${item.title.toLowerCase()}/${subItem.toLowerCase().replace(/ /g, '-')}`}
+                      href={`/${item.title.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-')}/${subItem.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-')}`}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       {subItem}
@@ -73,7 +73,7 @@ export default function Navbar() {
               <span className="sr-only">Open main menu</span>
               {/* Hamburger icon */}
               <svg
-                className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
+                className={`${isOpen ? "hidden" : "block"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -83,7 +83,7 @@ export default function Navbar() {
               </svg>
               {/* Close icon */}
               <svg
-                className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
+                className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
+      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         {menuItems.map((item) => (
           <div key={item.title} className="px-2 pt-2 pb-3 space-y-1">
             <button className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
@@ -106,7 +106,7 @@ export default function Navbar() {
             {item.submenu.map((subItem) => (
               <Link
                 key={subItem}
-                href={`/${item.title.toLowerCase()}/${subItem.toLowerCase().replace(/ /g, '-')}`}
+                href={`/${item.title.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-')}/${subItem.toLowerCase().replace(/ & /g, '-and-').replace(/ /g, '-')}`}
                 className="block pl-6 py-2 text-sm text-gray-600 hover:bg-gray-50"
               >
                 {subItem}
@@ -117,4 +117,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}
