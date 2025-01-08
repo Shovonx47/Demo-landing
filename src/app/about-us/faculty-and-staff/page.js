@@ -1,7 +1,9 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { facultyData } from '@/data/facultyData';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 // Loading component
 function Loading() {
@@ -49,6 +51,7 @@ export default function FacultyStaffPage() {
   const [selectedFaculty, setSelectedFaculty] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [facultyData, setFacultyData] = useState([]);
 
   const departments = [
     'All Departments',
@@ -59,6 +62,30 @@ export default function FacultyStaffPage() {
     'English',
     'Bengali',
   ];
+
+  // Fetch faculty data based on selected department and search term
+  useEffect(() => {
+    const fetchFaculty = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          `${API_URL}/faculty?department=${selectedDepartment}&search=${searchTerm}`
+        );
+        const data = await response.json();
+        if (data.success) {
+          setFacultyData(data.data);
+        } else {
+          setError('Failed to fetch faculty data');
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFaculty();
+  }, [selectedDepartment, searchTerm]);
 
   const filteredFaculty = facultyData.filter(faculty => {
     const matchesSearch = faculty.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -240,4 +267,4 @@ export default function FacultyStaffPage() {
       )}
     </div>
   );
-} 
+}
